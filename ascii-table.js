@@ -8,6 +8,8 @@
 ;(function() {
 'use strict';
 
+var wordWidth = require('word-width');
+
 /*!
  * Module dependencies
  */
@@ -85,9 +87,9 @@ AsciiTable.alignLeft = function(str, len, pad) {
   if (str === undefined || str === null) str = ''
   if (typeof pad === 'undefined') pad = ' '
   if (typeof str !== 'string') str = str.toString()
-  var alen = len + 1 - str.length
+  var alen = len + 1 - wordWidth(str)
   if (alen <= 0) return str
-  return str + Array(len + 1 - str.length).join(pad)
+  return str + Array(len + 1 - wordWidth(str)).join(pad)
 }
 
 /**
@@ -104,12 +106,12 @@ AsciiTable.alignCenter = function(str, len, pad) {
   if (str === undefined || str === null) str = ''
   if (typeof pad === 'undefined') pad = ' '
   if (typeof str !== 'string') str = str.toString()
-  var nLen = str.length
+  var nLen = wordWidth(str)
     , half = Math.floor(len / 2 - nLen / 2)
     , odds = Math.abs((nLen % 2) - (len % 2))
-    , len = str.length
+    , len = wordWidth(str)
 
-  return AsciiTable.alignRight('', half, pad) 
+  return AsciiTable.alignRight('', half, pad)
     + str
     + AsciiTable.alignLeft('', half + odds, pad)
 }
@@ -128,9 +130,9 @@ AsciiTable.alignRight = function(str, len, pad) {
   if (str === undefined || str === null) str = ''
   if (typeof pad === 'undefined') pad = ' '
   if (typeof str !== 'string') str = str.toString()
-  var alen = len + 1 - str.length
+  var alen = len + 1 - wordWidth(str)
   if (alen <= 0) return str
-  return Array(len + 1 - str.length).join(pad) + str
+  return Array(len + 1 - wordWidth(str)).join(pad) + str
 }
 
 /**
@@ -150,7 +152,7 @@ AsciiTable.alignAuto = function(str, len, pad) {
   if (type !== '[object String]') {
     str = str.toString()
   }
-  if (str.length < len) {
+  if (wordWidth(str) < len) {
     switch(type) {
       case '[object Number]': return AsciiTable.alignRight(str, len, pad)
       default: return AsciiTable.alignLeft(str, len, pad)
@@ -506,7 +508,7 @@ AsciiTable.prototype.toString = function() {
     var row = all[i]
     for (var k = 0; k < mLen; k++) {
       var cell = row[k]
-      max[k] = Math.max(max[k], cell ? cell.toString().length : 0)
+      max[k] = Math.max(max[k], cell ? wordWidth(cell.toString()) : 0)
     }
   }
   this.__colMaxes = max

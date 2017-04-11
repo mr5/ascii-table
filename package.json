@@ -1,11 +1,11 @@
 {
-  "name": "ascii-table",
-  "version": "0.0.9",
-  "author": "Beau Sorensen <mail@beausorensen.com> (http://github.com/sorensen)",
+  "name": "ascii-table-unicode",
+  "version": "0.1.0",
+  "author": "mr.5 <mr5.simple@gmail.com> (http://github.com/mr5)",
   "description": "Easy tables for your console data",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sorensen/ascii-table.git"
+    "url": "git://github.com/mr5/ascii-table.git"
   },
   "license": "MIT",
   "keywords": [
@@ -14,6 +14,10 @@
     "console"
   ],
   "contributors": [
+    {
+      "name": "Beau Sorensen",
+      "github": "https://github.com/sorensen"
+    },
     {
       "name": "Matthew Oliveira",
       "github": "https://github.com/m4olivei"
@@ -35,5 +39,7 @@
     "mocha": "^2.4.5",
     "uglify-js2": "^2.1.11"
   },
-  "dependencies": {}
+  "dependencies": {
+    "word-width": "^1.0.0"
+  }
 }
