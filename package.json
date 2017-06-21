@@ -1,6 +1,6 @@
 {
   "name": "ascii-table-unicode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "mr.5 <mr5.simple@gmail.com> (http://github.com/mr5)",
   "description": "Easy tables for your console data",
   "repository": {
@@ -40,6 +40,6 @@
     "uglify-js2": "^2.1.11"
   },
   "dependencies": {
-    "word-width": "^1.0.0"
+    "string-width": "^2.0.0"
   }
 }

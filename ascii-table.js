@@ -8,7 +8,7 @@
 ;(function() {
 'use strict';
 
-var wordWidth = require('word-width');
+var wordWidth = require('string-width')
 
 /*!
  * Module dependencies
